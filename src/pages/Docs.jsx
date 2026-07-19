@@ -1,6 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Code2, Terminal, Sparkles, Layers, Rocket, Monitor, FileCode2, Zap } from 'lucide-react';
+
+const codeString = `// System Architecture & Scale Strategy
+{
+  "architecture": {
+    "markdown_content_system": {
+      "type": "Custom Vite Markdown CMS",
+      "problem": "Hardcoding content into React components became unmaintainable as the portfolio grew.",
+      "solution": "Engineered a lightweight CMS. Projects are authored in clean .md files with YAML frontmatter.",
+      "build_process": "Vite parses files at build time, transforming them to HTML and extracting metadata for grids."
+    },
+
+    "dynamic_event_management": {
+      "type": "Modular Pagination Architecture",
+      "strategy": "Decoupled event data into structured files with a flexible 'Load More' pagination system.",
+      "benefits": [
+        "Lightning-fast initial page load",
+        "On-demand DOM rendering for seamless scalability",
+        "Comfortably handles ever-expanding timelines"
+      ]
+    }
+  }
+}`;
+
+const AnimatedTerminalCode = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    if (isInView) {
+      let i = 0;
+      const interval = setInterval(() => {
+        i += 4;
+        if (i > codeString.length) {
+          setDisplayedText(codeString);
+          clearInterval(interval);
+        } else {
+          setDisplayedText(codeString.slice(0, i));
+        }
+      }, 15);
+      return () => clearInterval(interval);
+    }
+  }, [isInView]);
+
+  const highlightJSON = (text) => {
+    let html = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    html = html.replace(/(\/\/.*)/g, '<span class="text-gray-500 italic">$1</span>');
+    html = html.replace(/([{}[\]])/g, '<span class="text-yellow-300">$1</span>');
+    html = html.replace(/"([^"]+)"(?=\s*:)/g, '<span class="text-[#7ee787]">"$1"</span>');
+    html = html.replace(/"([^"]+)"(?!\s*:)/g, '<span class="text-[#a5d6ff]">"$1"</span>');
+    return { __html: html };
+  };
+
+  return (
+    <div ref={ref} className="text-gray-300 whitespace-pre-wrap break-words min-h-[300px]" dangerouslySetInnerHTML={highlightJSON(displayedText)} />
+  );
+};
 
 const techPool = [
   { id: 1, name: 'React 19', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
@@ -270,86 +327,7 @@ const Docs = () => {
 
           {/* Editor Content */}
           <div className="p-4 md:p-5 font-mono text-[11px] md:text-xs overflow-hidden leading-relaxed">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: {
-                  transition: {
-                    staggerChildren: 0.08
-                  }
-                }
-              }}
-              className="text-gray-300 whitespace-pre-wrap break-words"
-            >
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span className="text-gray-500 italic">{"// System Architecture & Scale Strategy"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span className="text-yellow-300">{"{"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"  "}</span><span className="text-[#7ee787]">"architecture"</span><span className="text-yellow-300">{": {"}</span>
-              </motion.div>
-              
-              {/* Markdown CMS Block */}
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"    "}</span><span className="text-[#7ee787]">"markdown_content_system"</span><span className="text-purple-400">{": {"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"type"</span><span>: </span><span className="text-[#a5d6ff]">"Custom Vite Markdown CMS"</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"problem"</span><span>: </span><span className="text-[#a5d6ff]">"Hardcoding content into React components became unmaintainable as the portfolio grew."</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"solution"</span><span>: </span><span className="text-[#a5d6ff]">"Engineered a lightweight CMS. Projects are authored in clean .md files with YAML frontmatter."</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"build_process"</span><span>: </span><span className="text-[#a5d6ff]">"Vite parses files at build time, transforming them to HTML and extracting metadata for grids."</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"    "}</span><span className="text-purple-400">{"}"}</span><span>,</span>
-              </motion.div>
-
-              <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}><br/></motion.div>
-
-              {/* Dynamic Events Block */}
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"    "}</span><span className="text-[#7ee787]">"dynamic_event_management"</span><span className="text-purple-400">{": {"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"type"</span><span>: </span><span className="text-[#a5d6ff]">"Modular Pagination Architecture"</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"strategy"</span><span>: </span><span className="text-[#a5d6ff]">"Decoupled event data into structured files with a flexible 'Load More' pagination system."</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-[#7ee787]">"benefits"</span><span>: </span><span className="text-blue-300">{"["}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"        "}</span><span className="text-[#a5d6ff]">"Lightning-fast initial page load"</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"        "}</span><span className="text-[#a5d6ff]">"On-demand DOM rendering for seamless scalability"</span><span>,</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"        "}</span><span className="text-[#a5d6ff]">"Comfortably handles ever-expanding timelines"</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"      "}</span><span className="text-blue-300">{"]"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"    "}</span><span className="text-purple-400">{"}"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span>{"  "}</span><span className="text-yellow-300">{"}"}</span>
-              </motion.div>
-              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
-                <span className="text-yellow-300">{"}"}</span>
-              </motion.div>
-            </motion.div>
+            <AnimatedTerminalCode />
           </div>
         </motion.div>
         </div>
