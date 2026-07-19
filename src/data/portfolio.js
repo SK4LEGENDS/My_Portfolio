@@ -6,10 +6,10 @@ export const portfolioData = {
   phone: "+91 90802 85651",
   website: "kailashselvarajan.com",
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/SK4LEGENDS",
+    linkedin: "https://www.linkedin.com/in/kailashselvarajan/?skipRedirect=true",
     x: "https://twitter.com",
-    instagram: "https://instagram.com"
+    instagram: "https://www.instagram.com/sk4.legends/"
   },
   navLinks: [
     { name: "Home", path: "#home" },
