@@ -233,29 +233,29 @@ const Docs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="space-y-4"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
-              <div className="glass p-6 md:p-8 rounded-xl border border-white/5 border-l-4 border-l-primary/60">
-                <h4 className="text-xl text-white font-bold mb-4 flex items-center gap-3"><FileCode2 size={24} className="text-primary"/> Markdown CMS Architecture</h4>
+              <div className="glass p-6 md:p-8 rounded-xl border border-white/5 border-t-4 border-t-primary/60 hover:border-primary/30 transition-colors">
+                <h4 className="text-xl text-white font-bold mb-4 flex items-center gap-3"><FileCode2 size={24} className="text-primary"/> Markdown CMS</h4>
                 <p className="text-text-secondary leading-relaxed mb-4">
                   Instead of hardcoding projects directly into React components, I engineered a custom-built Vite parser that allows me to write content in clean, lightweight <code className="text-primary bg-primary/10 px-1.5 py-0.5 rounded">.md</code> files.
                 </p>
                 <ul className="list-disc list-inside text-text-secondary space-y-2 ml-2">
-                  <li>Extracts YAML frontmatter for fast grid metadata loading</li>
-                  <li>Transforms raw Markdown into rich React components dynamically</li>
-                  <li>Significantly reduces boilerplate code and maintenance overhead</li>
+                  <li>Extracts YAML frontmatter for fast metadata loading</li>
+                  <li>Transforms raw Markdown into rich React components</li>
+                  <li>Significantly reduces boilerplate code overhead</li>
                 </ul>
               </div>
               
-              <div className="glass p-6 md:p-8 rounded-xl border border-white/5 border-l-4 border-l-[#ffbd2e]/60">
-                <h4 className="text-xl text-white font-bold mb-4 flex items-center gap-3"><Zap size={24} className="text-[#ffbd2e]"/> Lazy Rendering & Pagination</h4>
+              <div className="glass p-6 md:p-8 rounded-xl border border-white/5 border-t-4 border-t-[#ffbd2e]/60 hover:border-[#ffbd2e]/30 transition-colors">
+                <h4 className="text-xl text-white font-bold mb-4 flex items-center gap-3"><Zap size={24} className="text-[#ffbd2e]"/> Lazy Rendering</h4>
                 <p className="text-text-secondary leading-relaxed mb-4">
-                  Rendering massive amounts of project history all at once can bottleneck the browser. By implementing a modular pagination strategy paired with a dedicated "Load More" system, the portfolio handles growth effortlessly.
+                  Rendering massive amounts of project history all at once can bottleneck the browser. By implementing a modular pagination strategy paired with a dedicated "Load More" system, the portfolio scales effortlessly.
                 </p>
                 <ul className="list-disc list-inside text-text-secondary space-y-2 ml-2">
-                  <li>Prevents infinite DOM expansion to maintain buttery smooth 60fps</li>
-                  <li>Dramatically cuts down initial page load times and network payloads</li>
-                  <li>Guarantees a seamless browsing experience even on mobile devices</li>
+                  <li>Prevents infinite DOM expansion to maintain 60fps</li>
+                  <li>Dramatically cuts down initial network payloads</li>
+                  <li>Guarantees a seamless browsing experience on mobile</li>
                 </ul>
               </div>
             </motion.div>
