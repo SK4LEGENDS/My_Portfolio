@@ -352,6 +352,7 @@ const Docs = () => {
             </motion.div>
           </div>
         </motion.div>
+        </div>
       </section>
 
       {/* ---------------- TECH STACK SECTION ---------------- */}
