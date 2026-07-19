@@ -17,6 +17,7 @@ const Navbar = () => {
   const navLinks = isDocsPage 
     ? [
         { name: 'Intro', path: '#intro' },
+        { name: 'Architecture', path: '#scale' },
         { name: 'Tech Stack', path: '#tech-stack' },
         { name: 'Easter Eggs', path: '#easter-eggs' }
       ]

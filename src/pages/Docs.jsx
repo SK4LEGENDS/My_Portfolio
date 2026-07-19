@@ -202,26 +202,60 @@ const Docs = () => {
 
       {/* ---------------- DATA SCALE SECTION ---------------- */}
       <section id="scale" className="mb-32 pt-16 relative">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex items-center gap-4 mb-12"
-        >
-          <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10 relative overflow-hidden group">
-            <Monitor className="text-primary relative z-10" />
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+          
+          {/* Left Side: Explanatory Text */}
+          <div className="flex-1 space-y-8 w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-2"
+            >
+              <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10 relative overflow-hidden group">
+                <Monitor className="text-primary relative z-10" />
+              </div>
+              <h2 className="text-4xl font-black font-display text-white">Handling Scale</h2>
+            </motion.div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-text-secondary text-lg leading-relaxed"
+            >
+              As the portfolio grows with more projects and events, maintaining performance and organization becomes crucial. I engineered a robust architecture to handle this seamlessly.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="space-y-4"
+            >
+              <div className="glass p-5 rounded-xl border border-white/5 border-l-2 border-l-primary/50">
+                <h4 className="text-white font-bold mb-2 flex items-center gap-2"><FileCode2 size={18} className="text-primary"/> Markdown CMS</h4>
+                <p className="text-sm text-text-secondary leading-relaxed">Custom-built Vite parser to transform lightweight <code className="text-primary bg-primary/10 px-1.5 py-0.5 rounded">.md</code> files with YAML frontmatter into rich React components dynamically at build time.</p>
+              </div>
+              
+              <div className="glass p-5 rounded-xl border border-white/5 border-l-2 border-l-[#ffbd2e]/50">
+                <h4 className="text-white font-bold mb-2 flex items-center gap-2"><Zap size={18} className="text-[#ffbd2e]"/> Lazy Rendering</h4>
+                <p className="text-sm text-text-secondary leading-relaxed">Modular pagination with a "Load More" system prevents the DOM from expanding infinitely, maintaining buttery smooth 60fps performance.</p>
+              </div>
+            </motion.div>
           </div>
-          <h2 className="text-4xl font-black font-display text-white">Handling Scale</h2>
-        </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-[#0d1117] shadow-2xl relative z-10"
-        >
-          {/* Editor Header */}
+          {/* Right Side: Animated Terminal Editor */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex-1 w-full rounded-xl overflow-hidden border border-white/10 bg-[#0d1117] shadow-2xl shadow-primary/5 relative z-10"
+          >
+            {/* Editor Header */}
           <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-white/5">
             <div className="flex gap-2 mr-4">
               <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
