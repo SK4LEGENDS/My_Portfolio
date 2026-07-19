@@ -19,7 +19,7 @@ const techPool = [
 
 const TechBox = ({ tech }) => {
   return (
-    <div className="relative w-full aspect-square md:aspect-auto md:h-32 glass rounded-2xl border border-white/10 overflow-hidden hover:border-primary/40 transition-colors group">
+    <div className="relative w-full aspect-square md:aspect-auto md:h-40 lg:h-44 glass rounded-3xl border border-white/10 overflow-hidden hover:border-primary/40 transition-colors group">
       <AnimatePresence mode="wait">
         <motion.div
           key={tech.id}
@@ -27,10 +27,10 @@ const TechBox = ({ tech }) => {
           animate={{ opacity: 1, scale: 1, rotateX: 0 }}
           exit={{ opacity: 0, scale: 0.8, rotateX: -90 }}
           transition={{ duration: 0.4 }}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4"
+          className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-4"
         >
-          <img src={tech.icon} alt={tech.name} className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-500" />
-          <span className="text-white font-bold text-xs md:text-sm text-center">{tech.name}</span>
+          <img src={tech.icon} alt={tech.name} className="w-14 h-14 lg:w-16 lg:h-16 object-contain group-hover:scale-110 transition-transform duration-500" />
+          <span className="text-white font-bold text-sm md:text-base text-center">{tech.name}</span>
         </motion.div>
       </AnimatePresence>
     </div>
@@ -198,6 +198,32 @@ const Docs = () => {
             </div>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* ---------------- DATA SCALE SECTION ---------------- */}
+      <section id="scale" className="mb-32 pt-16">
+        <div className="flex items-center gap-4 mb-12">
+          <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10">
+            <Monitor className="text-primary" />
+          </div>
+          <h2 className="text-4xl font-black font-display text-white">Handling Scale</h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="glass p-8 rounded-3xl border border-white/5 group hover:border-primary/30 transition-colors">
+            <h3 className="text-2xl font-bold text-white mb-4">Markdown Content System</h3>
+            <p className="text-text-secondary leading-relaxed">
+              With a growing portfolio of complex projects, hardcoding content into React components became unmaintainable. I engineered a lightweight, custom Markdown-based Content Management System (CMS). Projects are authored in clean <code>.md</code> files featuring YAML frontmatter for metadata (like tags, dates, and links). At build time, Vite parses these files, transforming them into rich HTML while extracting metadata to dynamically populate the portfolio grids. This separation of content and presentation allows for rapid additions and robust scalability.
+            </p>
+          </div>
+
+          <div className="glass p-8 rounded-3xl border border-white/5 group hover:border-primary/30 transition-colors">
+            <h3 className="text-2xl font-bold text-white mb-4">Dynamic Event Management</h3>
+            <p className="text-text-secondary leading-relaxed">
+              Similar to the projects system, the events timeline relies on a highly modular architecture. By decoupling the event data into structured files and implementing a flexible <strong>"Load More"</strong> pagination system, the UI can comfortably handle an ever-expanding timeline of workshops, hackathons, and seminars. This ensures the initial page load remains lightning-fast, fetching and rendering additional DOM nodes only when requested by the user.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ---------------- TECH STACK SECTION ---------------- */}
