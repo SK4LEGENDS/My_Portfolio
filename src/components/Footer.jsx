@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp, Code2 } from 'lucide-react';
 import { Mail } from 'lucide-react';
-import { GitHub, LinkedIn, XIcon } from './Icons';
+import { GitHub, LinkedIn } from './Icons';
 import { portfolioData } from '../data/portfolio';
 import { Link } from 'react-router-dom';
 
@@ -33,9 +33,6 @@ const Footer = () => {
               </a>
               <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 bg-dark-muted rounded-full hover:bg-primary transition-colors group">
                 <LinkedIn size={20} className="group-hover:text-white" />
-              </a>
-              <a href={portfolioData.socials.x} target="_blank" rel="noopener noreferrer" className="p-2 bg-dark-muted rounded-full hover:bg-primary transition-colors group">
-                <XIcon size={20} className="group-hover:text-white" />
               </a>
               <a href={`mailto:${portfolioData.email}`} className="p-2 bg-dark-muted rounded-full hover:bg-primary transition-colors group">
                 <Mail size={20} className="group-hover:text-white" />

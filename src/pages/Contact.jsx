@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MessageSquare, Send, MapPin } from 'lucide-react';
-import { GitHub, LinkedIn, XIcon } from '../components/Icons';
+import { GitHub, LinkedIn } from '../components/Icons';
 import PageWrapper from '../components/PageWrapper';
 import { portfolioData } from '../data/portfolio';
 
@@ -85,7 +85,6 @@ const Contact = () => {
             <div className="flex gap-3">
               <a href={portfolioData.socials.github} target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-xl text-white hover:text-primary transition-all hover:-translate-y-1"><GitHub size={20} /></a>
               <a href={portfolioData.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-xl text-white hover:text-primary transition-all hover:-translate-y-1"><LinkedIn size={20} /></a>
-              <a href={portfolioData.socials.x} target="_blank" rel="noopener noreferrer" className="p-3 glass rounded-xl text-white hover:text-primary transition-all hover:-translate-y-1"><XIcon size={20} /></a>
               <a href={`mailto:${portfolioData.email}`} className="p-3 glass rounded-xl text-white hover:text-primary transition-all hover:-translate-y-1"><Mail size={20} /></a>
             </div>
           </div>
