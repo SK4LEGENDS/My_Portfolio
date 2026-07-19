@@ -202,7 +202,7 @@ const Docs = () => {
 
       {/* ---------------- DATA SCALE SECTION ---------------- */}
       <section id="scale" className="mb-32 pt-16 relative">
-        <div className="max-w-3xl mx-auto">
+        <div className="w-full">
           
           {/* Explanatory Text */}
           <div className="space-y-8 w-full">
