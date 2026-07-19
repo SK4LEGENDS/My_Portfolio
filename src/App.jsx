@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-import ChatAgent from './components/ChatAgent';
 import CustomCursor from './components/CustomCursor';
 import TerminalMode from './components/TerminalMode';
 import ScrollTrace from './components/ScrollTrace';
@@ -53,7 +52,6 @@ function App() {
       <div className="relative z-10">
         <Footer />
       </div>
-      <ChatAgent />
       <TerminalMode />
       <EasterEggs />
       <GravityMode />
