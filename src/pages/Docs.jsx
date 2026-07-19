@@ -269,7 +269,7 @@ const Docs = () => {
           </div>
 
           {/* Editor Content */}
-          <div className="p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto">
+          <div className="p-6 md:p-8 font-mono text-sm md:text-base overflow-hidden">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -281,7 +281,7 @@ const Docs = () => {
                   }
                 }
               }}
-              className="text-gray-300 whitespace-pre"
+              className="text-gray-300 whitespace-pre-wrap break-words"
             >
               <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
                 <span className="text-gray-500 italic">{"// System Architecture & Scale Strategy"}</span>
