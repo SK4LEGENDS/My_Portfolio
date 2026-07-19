@@ -1,63 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Code2, Terminal, Sparkles, Layers, Rocket, Monitor, FileCode2, Zap } from 'lucide-react';
-
-const codeString = `// System Architecture & Scale Strategy
-{
-  "architecture": {
-    "markdown_content_system": {
-      "type": "Custom Vite Markdown CMS",
-      "problem": "Hardcoding content into React components became unmaintainable as the portfolio grew.",
-      "solution": "Engineered a lightweight CMS. Projects are authored in clean .md files with YAML frontmatter.",
-      "build_process": "Vite parses files at build time, transforming them to HTML and extracting metadata for grids."
-    },
-
-    "dynamic_event_management": {
-      "type": "Modular Pagination Architecture",
-      "strategy": "Decoupled event data into structured files with a flexible 'Load More' pagination system.",
-      "benefits": [
-        "Lightning-fast initial page load",
-        "On-demand DOM rendering for seamless scalability",
-        "Comfortably handles ever-expanding timelines"
-      ]
-    }
-  }
-}`;
-
-const AnimatedTerminalCode = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [displayedText, setDisplayedText] = useState("");
-
-  useEffect(() => {
-    if (isInView) {
-      let i = 0;
-      const interval = setInterval(() => {
-        i += 4;
-        if (i > codeString.length) {
-          setDisplayedText(codeString);
-          clearInterval(interval);
-        } else {
-          setDisplayedText(codeString.slice(0, i));
-        }
-      }, 15);
-      return () => clearInterval(interval);
-    }
-  }, [isInView]);
-
-  const highlightJSON = (text) => {
-    let html = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    html = html.replace(/(\/\/.*)/g, '<span class="text-gray-500 italic">$1</span>');
-    html = html.replace(/([{}[\]])/g, '<span class="text-yellow-300">$1</span>');
-    html = html.replace(/"([^"]+)"(?=\s*:)/g, '<span class="text-[#7ee787]">"$1"</span>');
-    html = html.replace(/"([^"]+)"(?!\s*:)/g, '<span class="text-[#a5d6ff]">"$1"</span>');
-    return { __html: html };
-  };
-
-  return (
-    <div ref={ref} className="text-gray-300 whitespace-pre-wrap break-words min-h-[300px]" dangerouslySetInnerHTML={highlightJSON(displayedText)} />
-  );
-};
 
 const techPool = [
   { id: 1, name: 'React 19', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
@@ -259,10 +202,10 @@ const Docs = () => {
 
       {/* ---------------- DATA SCALE SECTION ---------------- */}
       <section id="scale" className="mb-32 pt-16 relative">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+        <div className="max-w-3xl mx-auto">
           
-          {/* Left Side: Explanatory Text */}
-          <div className="flex-1 space-y-8 w-full">
+          {/* Explanatory Text */}
+          <div className="space-y-8 w-full">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -303,33 +246,6 @@ const Docs = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Right Side: Animated Terminal Editor */}
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 w-full rounded-xl overflow-hidden border border-white/10 bg-[#0d1117] shadow-2xl shadow-primary/5 relative z-10"
-          >
-            {/* Editor Header */}
-          <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-white/5">
-            <div className="flex gap-2 mr-4">
-              <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-              <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-            </div>
-            <div className="flex-1 text-center">
-              <span className="text-xs font-mono text-gray-400">architecture.config.json</span>
-            </div>
-            <div className="w-16" /> {/* Spacer for centering */}
-          </div>
-
-          {/* Editor Content */}
-          <div className="p-4 md:p-5 font-mono text-[11px] md:text-xs overflow-hidden leading-relaxed">
-            <AnimatedTerminalCode />
-          </div>
-        </motion.div>
         </div>
       </section>
 
