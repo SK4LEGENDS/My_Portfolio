@@ -269,7 +269,7 @@ const Docs = () => {
           </div>
 
           {/* Editor Content */}
-          <div className="p-6 md:p-8 font-mono text-sm md:text-base overflow-hidden">
+          <div className="p-4 md:p-5 font-mono text-[11px] md:text-xs overflow-hidden leading-relaxed">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -277,7 +277,7 @@ const Docs = () => {
               variants={{
                 visible: {
                   transition: {
-                    staggerChildren: 0.1
+                    staggerChildren: 0.08
                   }
                 }
               }}
