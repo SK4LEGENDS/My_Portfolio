@@ -1,0 +1,68 @@
+Created At: 2026-06-10T08:11:13Z
+Completed At: 2026-06-10T08:11:13Z
+File Path: `file:///d:/Projects/Portfolio/src/data/portfolio.js`
+Total Lines: 60
+Total Bytes: 1935
+Showing lines 1 to 60
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: export const portfolioData = {
+2:   name: "Kailash",
+3:   role: "Agentic AI Developer",
+4:   summary: "Automation Developer specializing in the intersection of Agentic AI, Generative AI, and intelligent automation. Expert in building scalable AI-driven solutions using LLMs, API integrations, and enterprise platforms like UiPath.",
+5:   email: "kailashselvarajan@gmail.com",
+6:   phone: "+91 90802 85651",
+7:   website: "kailashselvarajan.com",
+8:   socials: {
+9:     github: "https://github.com",
+10:     linkedin: "https://linkedin.com",
+11:     twitter: "https://twitter.com",
+12:     instagram: "https://instagram.com"
+13:   },
+14:   navLinks: [
+15:     { name: "Home", path: "/" },
+16:     { name: "About", path: "/about" },
+17:     { name: "Projects", path: "/projects" },
+18:     { name: "Skills", path: "/skills" },
+19:     { name: "Resume", path: "/resume" },
+20:     { name: "Blog", path: "/blog" },
+21:     { name: "Contact", path: "/contact" }
+22:   ],
+23:   skills: [
+24:     {
+25:       category: "Frontend",
+26:       items: [
+27:         { name: "React / Next.js", level: 95 },
+28:         { name: "TypeScript", level: 90 },
+29:         { name: "Tailwind CSS", level: 98 },
+30:         { name: "Framer Motion", level: 85 },
+31:         { name: "Redux / Zustand", level: 88 }
+32:       ]
+33:     },
+34:     {
+35:       category: "Backend",
+36:       items: [
+37:         { name: "Node.js / Express", level: 90 },
+38:         { name: "Python / FastAPI", level: 82 },
+39:         { name: "PostgreSQL", level: 85 },
+40:         { name: "MongoDB", level: 80 },
+41:         { name: "GraphQL", level: 75 }
+42:       ]
+43:     },
+44:     {
+45:       category: "Tools & DevOps",
+46:       items: [
+47:         { name: "Docker", level: 78 },
+48:         { name: "AWS", level: 70 },
+49:         { name: "Git / GitHub", level: 95 },
+50:         { name: "Figma", level: 85 },
+51:         { name: "CI/CD", level: 75 }
+52:       ]
+53:     }
+54:   ],
+55:   experience: [],
+56:   education: [],
+57:   volunteer: [],
+58:   certifications: [],
+59:   // Projects and Blog data have been migrated to Markdown files in src/content/projects and src/content/blog.
+60: };
+The above content shows the entire, complete file contents of the requested file.
