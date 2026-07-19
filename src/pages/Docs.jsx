@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code2, Terminal, Sparkles, Layers, Rocket, Monitor } from 'lucide-react';
+import { Code2, Terminal, Sparkles, Layers, Rocket, Monitor, FileCode2, Zap } from 'lucide-react';
 
 const techPool = [
   { id: 1, name: 'React 19', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
@@ -201,28 +201,63 @@ const Docs = () => {
       </section>
 
       {/* ---------------- DATA SCALE SECTION ---------------- */}
-      <section id="scale" className="mb-32 pt-16">
-        <div className="flex items-center gap-4 mb-12">
-          <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10">
-            <Monitor className="text-primary" />
+      <section id="scale" className="mb-32 pt-16 relative">
+        {/* Decorative background for the section */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-12"
+        >
+          <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            <Monitor className="text-primary relative z-10" />
           </div>
           <h2 className="text-4xl font-black font-display text-white">Handling Scale</h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="glass p-8 rounded-3xl border border-white/5 group hover:border-primary/30 transition-colors">
-            <h3 className="text-2xl font-bold text-white mb-4">Markdown Content System</h3>
-            <p className="text-text-secondary leading-relaxed">
-              With a growing portfolio of complex projects, hardcoding content into React components became unmaintainable. I engineered a lightweight, custom Markdown-based Content Management System (CMS). Projects are authored in clean <code>.md</code> files featuring YAML frontmatter for metadata (like tags, dates, and links). At build time, Vite parses these files, transforming them into rich HTML while extracting metadata to dynamically populate the portfolio grids. This separation of content and presentation allows for rapid additions and robust scalability.
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.5 }}
+            className="glass p-8 md:p-10 rounded-3xl border border-white/5 relative overflow-hidden group shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 pointer-events-none">
+              <FileCode2 size={120} />
+            </div>
+            <div className="w-14 h-14 bg-dark-surface rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+              <FileCode2 className="text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">Markdown Content System</h3>
+            <p className="text-text-secondary leading-relaxed relative z-10 text-lg">
+              With a growing portfolio of complex projects, hardcoding content into React components became unmaintainable. I engineered a lightweight, custom Markdown-based Content Management System (CMS). Projects are authored in clean <code className="bg-white/10 px-2 py-1 rounded text-sm text-primary font-mono tracking-wider">.md</code> files featuring YAML frontmatter for metadata (like tags, dates, and links). At build time, Vite parses these files, transforming them into rich HTML while extracting metadata to dynamically populate the portfolio grids. This separation of content and presentation allows for rapid additions and robust scalability.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="glass p-8 rounded-3xl border border-white/5 group hover:border-primary/30 transition-colors">
-            <h3 className="text-2xl font-bold text-white mb-4">Dynamic Event Management</h3>
-            <p className="text-text-secondary leading-relaxed">
-              Similar to the projects system, the events timeline relies on a highly modular architecture. By decoupling the event data into structured files and implementing a flexible <strong>"Load More"</strong> pagination system, the UI can comfortably handle an ever-expanding timeline of workshops, hackathons, and seminars. This ensures the initial page load remains lightning-fast, fetching and rendering additional DOM nodes only when requested by the user.
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="glass p-8 md:p-10 rounded-3xl border border-white/5 relative overflow-hidden group shadow-lg hover:shadow-primary/10 hover:border-primary/30 transition-all"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700 pointer-events-none">
+              <Zap size={120} />
+            </div>
+            <div className="w-14 h-14 bg-dark-surface rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+              <Zap className="text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">Dynamic Event Management</h3>
+            <p className="text-text-secondary leading-relaxed relative z-10 text-lg">
+              Similar to the projects system, the events timeline relies on a highly modular architecture. By decoupling the event data into structured files and implementing a flexible <strong className="text-white">"Load More"</strong> pagination system, the UI can comfortably handle an ever-expanding timeline of workshops, hackathons, and seminars. This ensures the initial page load remains lightning-fast, fetching and rendering additional DOM nodes only when requested by the user.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
