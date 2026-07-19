@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Download, ExternalLink } from 'lucide-react';
 import { GitHub } from '../components/Icons';
+import profileImg from '../assets/Kailash.png';
 
 import PageWrapper from '../components/PageWrapper';
 import { portfolioData } from '../data/portfolio';
@@ -117,7 +118,7 @@ const Home = () => {
 
             <div className="relative w-full h-full rounded-[40px] lg:rounded-[60px] border-4 border-primary/20 p-3 glass overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
               <img
-                src="/src/assets/Kailash.png"
+                src={profileImg}
                 alt="Kailash Profile"
                 className="w-full h-full object-cover rounded-[30px] lg:rounded-[50px]"
                 onError={(e) => { e.target.src = "https://via.placeholder.com/600?text=K"; }}
