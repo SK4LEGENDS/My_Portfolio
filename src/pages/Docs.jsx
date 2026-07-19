@@ -202,107 +202,122 @@ const Docs = () => {
 
       {/* ---------------- DATA SCALE SECTION ---------------- */}
       <section id="scale" className="mb-32 pt-16 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center gap-4 mb-20"
+          className="flex items-center gap-4 mb-12"
         >
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center relative overflow-hidden">
+          <div className="w-12 h-12 bg-dark-surface rounded-xl flex items-center justify-center border border-white/10 relative overflow-hidden group">
             <Monitor className="text-primary relative z-10" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-black font-display text-white">Handling Scale</h2>
+          <h2 className="text-4xl font-black font-display text-white">Handling Scale</h2>
         </motion.div>
 
-        <div className="space-y-24 md:space-y-32 relative z-10">
-          
-          {/* Feature 1: Markdown CMS */}
-          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 space-y-6"
-            >
-              <div className="flex items-center gap-4 text-primary">
-                <FileCode2 size={32} />
-                <h3 className="text-3xl md:text-4xl font-bold font-display text-white">Markdown Content System</h3>
-              </div>
-              <p className="text-text-secondary text-lg leading-relaxed">
-                With a growing portfolio of complex projects, hardcoding content into React components became unmaintainable. I engineered a lightweight, custom Markdown-based Content Management System (CMS). Projects are authored in clean <code className="text-primary font-mono bg-primary/10 px-2 py-1 rounded">.md</code> files featuring YAML frontmatter for metadata. At build time, Vite parses these files, transforming them into rich HTML while extracting metadata to dynamically populate the portfolio grids.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 flex justify-center relative"
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-[60px]" />
-                <motion.div 
-                  animate={{ rotate: 360 }} 
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }} 
-                  className="absolute inset-8 border border-primary/30 rounded-full border-dashed"
-                />
-                <motion.div 
-                  animate={{ rotate: -360 }} 
-                  transition={{ duration: 35, repeat: Infinity, ease: "linear" }} 
-                  className="absolute inset-2 border border-primary/10 rounded-full border-solid"
-                />
-                <FileCode2 size={80} className="text-primary relative z-10 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)]" />
-              </div>
-            </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-5xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-[#0d1117] shadow-2xl relative z-10"
+        >
+          {/* Editor Header */}
+          <div className="flex items-center px-4 py-3 bg-[#161b22] border-b border-white/5">
+            <div className="flex gap-2 mr-4">
+              <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+              <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+              <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+            </div>
+            <div className="flex-1 text-center">
+              <span className="text-xs font-mono text-gray-400">architecture.config.json</span>
+            </div>
+            <div className="w-16" /> {/* Spacer for centering */}
           </div>
 
-          {/* Feature 2: Event Management */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 space-y-6"
+          {/* Editor Content */}
+          <div className="p-6 md:p-8 font-mono text-sm md:text-base overflow-x-auto">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+              className="text-gray-300 whitespace-pre"
             >
-              <div className="flex items-center gap-4 text-primary">
-                <Zap size={32} />
-                <h3 className="text-3xl md:text-4xl font-bold font-display text-white">Dynamic Event Management</h3>
-              </div>
-              <p className="text-text-secondary text-lg leading-relaxed">
-                Similar to the projects system, the events timeline relies on a highly modular architecture. By decoupling the event data into structured files and implementing a flexible <strong className="text-white">"Load More"</strong> pagination system, the UI can comfortably handle an ever-expanding timeline of workshops, hackathons, and seminars. This ensures the initial page load remains lightning-fast, fetching and rendering additional DOM nodes only when requested by the user.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="flex-1 flex justify-center relative"
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-[60px]" />
-                <motion.div 
-                  animate={{ rotate: -360 }} 
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }} 
-                  className="absolute inset-8 border border-primary/30 rounded-full border-dashed"
-                />
-                <motion.div 
-                  animate={{ rotate: 360 }} 
-                  transition={{ duration: 35, repeat: Infinity, ease: "linear" }} 
-                  className="absolute inset-2 border border-primary/10 rounded-full border-solid"
-                />
-                <Zap size={80} className="text-primary relative z-10 drop-shadow-[0_0_15px_rgba(255,107,0,0.5)]" />
-              </div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span className="text-gray-500 italic">{"// System Architecture & Scale Strategy"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span className="text-yellow-300">{"{"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"  "}</span><span className="text-[#7ee787]">"architecture"</span><span className="text-yellow-300">{": {"}</span>
+              </motion.div>
+              
+              {/* Markdown CMS Block */}
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"    "}</span><span className="text-[#7ee787]">"markdown_content_system"</span><span className="text-purple-400">{": {"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"type"</span><span>: </span><span className="text-[#a5d6ff]">"Custom Vite Markdown CMS"</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"problem"</span><span>: </span><span className="text-[#a5d6ff]">"Hardcoding content into React components became unmaintainable as the portfolio grew."</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"solution"</span><span>: </span><span className="text-[#a5d6ff]">"Engineered a lightweight CMS. Projects are authored in clean .md files with YAML frontmatter."</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"build_process"</span><span>: </span><span className="text-[#a5d6ff]">"Vite parses files at build time, transforming them to HTML and extracting metadata for grids."</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"    "}</span><span className="text-purple-400">{"}"}</span><span>,</span>
+              </motion.div>
+
+              <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}><br/></motion.div>
+
+              {/* Dynamic Events Block */}
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"    "}</span><span className="text-[#7ee787]">"dynamic_event_management"</span><span className="text-purple-400">{": {"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"type"</span><span>: </span><span className="text-[#a5d6ff]">"Modular Pagination Architecture"</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"strategy"</span><span>: </span><span className="text-[#a5d6ff]">"Decoupled event data into structured files with a flexible 'Load More' pagination system."</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-[#7ee787]">"benefits"</span><span>: </span><span className="text-blue-300">{"["}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"        "}</span><span className="text-[#a5d6ff]">"Lightning-fast initial page load"</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"        "}</span><span className="text-[#a5d6ff]">"On-demand DOM rendering for seamless scalability"</span><span>,</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"        "}</span><span className="text-[#a5d6ff]">"Comfortably handles ever-expanding timelines"</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"      "}</span><span className="text-blue-300">{"]"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"    "}</span><span className="text-purple-400">{"}"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span>{"  "}</span><span className="text-yellow-300">{"}"}</span>
+              </motion.div>
+              <motion.div variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0 } }}>
+                <span className="text-yellow-300">{"}"}</span>
+              </motion.div>
             </motion.div>
           </div>
-
-        </div>
+        </motion.div>
       </section>
 
       {/* ---------------- TECH STACK SECTION ---------------- */}
